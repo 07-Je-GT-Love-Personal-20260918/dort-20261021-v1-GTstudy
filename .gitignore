@@ -1,0 +1,9 @@
+.vercel/
+node_modules/
+pdf-extracted.json
+source-page.html
+*.log
+dist/CNAME
+__pycache__/
+
+.vercel

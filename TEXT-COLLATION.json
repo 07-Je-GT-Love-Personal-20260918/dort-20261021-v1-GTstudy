@@ -1,0 +1,61 @@
+{
+  "apostles": {
+    "source": "https://ccifellowship.org/books/book-of-praise/creeds/apostles-creed",
+    "checked_date": "2026-10-21",
+    "reader_matches_recorded_CCI_text_ignoring_whitespace": true,
+    "normalized_sha256": "0e89c462973a2fdf3b95a59cdd7df218444768e18b52995521b62eecab3df94b",
+    "differences_from_PDF": [
+      {
+        "operation": "insert",
+        "PDF": "",
+        "CCI": "·"
+      }
+    ]
+  },
+  "nicene": {
+    "source": "https://ccifellowship.org/books/book-of-praise/creeds/nicene-creed",
+    "checked_date": "2026-10-21",
+    "reader_matches_recorded_CCI_text_ignoring_whitespace": true,
+    "normalized_sha256": "8d8511eaec46279095b75f096ade8096210caf8f6260ddd8656a6d8273f78c4b",
+    "differences_from_PDF": [
+      {
+        "operation": "delete",
+        "PDF": "上",
+        "CCI": ""
+      },
+      {
+        "operation": "delete",
+        "PDF": "上",
+        "CCI": ""
+      },
+      {
+        "operation": "delete",
+        "PDF": "着",
+        "CCI": ""
+      },
+      {
+        "operation": "delete",
+        "PDF": "受生与被造的区别",
+        "CCI": ""
+      },
+      {
+        "operation": "replace",
+        "PDF": "，",
+        "CCI": "。"
+      }
+    ]
+  },
+  "athanasian": {
+    "source": "https://ccifellowship.org/books/book-of-praise/creeds/athanasian-creed",
+    "checked_date": "2026-10-21",
+    "reader_matches_recorded_CCI_text_ignoring_whitespace": true,
+    "normalized_sha256": "8eb0ff04badd9627bbd01b1afb6d43268fc42bbc6bce2e335ef62127fa3cc6a2",
+    "differences_from_PDF": [
+      {
+        "operation": "insert",
+        "PDF": "",
+        "CCI": "非"
+      }
+    ]
+  }
+}

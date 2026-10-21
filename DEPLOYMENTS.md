@@ -6,7 +6,7 @@
 |---|---|---|
 | Vercel | https://dort-20261021-v1-gtstudy.vercel.app | 已发布；匿名HTTP读取返回200，正文标题核对通过 |
 | Surge | https://dort-20261021-v1-gtstudy.surge.sh | 已发布；匿名HTTP读取返回200，正文标题核对通过 |
-| GitHub Pages | https://07-je-gt-love-personal-20260918.github.io/dort-20261021-v1-GTstudy/ | 首次发布工作流成功；最终更新后复查 |
+| GitHub Pages | https://07-je-gt-love-personal-20260918.github.io/dort-20261021-v1-GTstudy/ | 最终发布工作流成功；匿名HTTP读取及最终文件一致性检查通过 |
 
 源码仓库：https://github.com/07-Je-GT-Love-Personal-20260918/dort-20261021-v1-GTstudy
 
@@ -20,8 +20,10 @@
 - 目录开合、I.17搜索与卡片翻面已在浏览器操作验证。
 - 三份普世信经按CCI正文录入且读页字符核对通过；三项联合信条未完成网站全文比对。差异见TEXT-COLLATION.json。
 
-本记录在三个公开地址最终复查后更新。
+最终一致性检查见DEPLOYMENT-CHECK.json：三个平台首页、使徒信经阅读页及样式均返回200，内容与本地最终文件一致。
 
 - 390px手机、768px平板、1440px桌面及2552px宽屏检查：无整页水平溢出。深色切换通过，控制台无错误。
 - 使用仓库内文本底本重建七页，输出与本地完整提取底本重建一致。
 - Vercel直接Git连接未成功；Pages自动发布正常，Vercel与Surge可按README命令持续更新。
+
+- 动画底部标签与说明的间距已修正，线上最终几何检查重叠为0。

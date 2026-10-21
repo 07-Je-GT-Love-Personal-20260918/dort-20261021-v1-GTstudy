@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-21",
+  "results": [
+    {
+      "url": "https://dort-20261021-v1-gtstudy.vercel.app/",
+      "files": {
+        "index.html": {
+          "status": 200,
+          "matches_local": true
+        },
+        "apostles.html": {
+          "status": 200,
+          "matches_local": true
+        },
+        "style.css": {
+          "status": 200,
+          "matches_local": true
+        }
+      }
+    },
+    {
+      "url": "https://dort-20261021-v1-gtstudy.surge.sh/",
+      "files": {
+        "index.html": {
+          "status": 200,
+          "matches_local": true
+        },
+        "apostles.html": {
+          "status": 200,
+          "matches_local": true
+        },
+        "style.css": {
+          "status": 200,
+          "matches_local": true
+        }
+      }
+    },
+    {
+      "url": "https://07-je-gt-love-personal-20260918.github.io/dort-20261021-v1-GTstudy/",
+      "files": {
+        "index.html": {
+          "status": 200,
+          "matches_local": true
+        },
+        "apostles.html": {
+          "status": 200,
+          "matches_local": true
+        },
+        "style.css": {
+          "status": 200,
+          "matches_local": true
+        }
+      }
+    }
+  ]
+}

@@ -5,3 +5,4 @@
 /* Keep rotating decoration within its own panel at all viewport widths. */
 .hero-art{overflow:clip}.art-note{bottom:0}.tools{flex-shrink:0}.tools button,.tools .button{white-space:nowrap}@media(max-width:360px){.topbar{padding-inline:12px}.brand{gap:6px}.brand>span{font-size:.8rem}.brand small{font-size:.43rem}.tools button,.tools .button{padding:7px 8px}.tools{gap:3px}}
 [hidden]{display:none!important}
+.o3{bottom:34px}

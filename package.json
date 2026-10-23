@@ -1,1 +1,10 @@
-{"name":"dort-20261021-v1-gtstudy","version":"1.0.0","private":true,"description":"多特信经深度研读 · 欧陆改革宗","scripts":{"build":"python build.py","preview":"python -m http.server 8765 --directory dist"}}
+{
+  "name": "dort-20261021-v1-gtstudy",
+  "version": "1.1.0",
+  "private": true,
+  "description": "多特信经深度研读 · 欧陆改革宗",
+  "scripts": {
+    "build": "python build.py",
+    "preview": "python -m http.server 8765 --directory dist"
+  }
+}

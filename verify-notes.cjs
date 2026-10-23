@@ -1,0 +1,20 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('dist/study.js','utf8');
+const start=source.indexOf("$('#notes-import').onchange=async e=>{");
+const end=source.indexOf('\n function jump(',start);
+const record={id:'migration-1',page:'atlas.html',title:'Migration',block:'read-abc-0',start:0,end:5,quote:'Grace',note:'Preserve this note',style:'yellow'};
+const imported={format:'dort-study-notes',version:2,annotations:[record],legacyNotes:'Imported free notes'};
+const state=new Map([['dort-notes','Existing free notes']]);const input={value:'selected'};
+const sandbox={records:[],KEY:'annotations',allowed:new Set(['yellow']),$:()=>input,localStorage:{getItem:k=>state.get(k)||null,setItem:(k,v)=>state.set(k,v)},document:{querySelectorAll:()=>[]},renderAll:()=>{},renderNotebook:()=>{},toast:()=>{},put:(k,v)=>{state.set(k,JSON.stringify(v));return true}};
+vm.createContext(sandbox);vm.runInContext(source.slice(start,end),sandbox);
+const load=async data=>input.onchange({target:{files:[{size:1000,text:async()=>JSON.stringify(data)}],value:'selected'}});
+(async()=>{
+ await load(imported);assert.equal(sandbox.records.length,1);assert.ok(state.get('dort-notes').includes('Existing free notes'));assert.ok(state.get('dort-notes').includes('Imported free notes'));
+ await load(imported);assert.equal(sandbox.records.length,1);assert.equal(state.get('dort-notes').split('Imported free notes').length,2);
+ await load({...imported,annotations:[{...record,id:'unsafe',page:'https://invalid.example/'}]});assert.equal(sandbox.records.length,1);
+ sandbox.put=()=>false;await load({...imported,annotations:[{...record,id:'failed-write'}]});assert.equal(sandbox.records.length,1);
+ sandbox.put=(k,v)=>{state.set(k,JSON.stringify(v));return true};
+ const exportStart=source.indexOf("$('#notes-export-json').onclick=");const exportEnd=source.indexOf('\n ',exportStart);
+ let backup;sandbox.download=(name,content)=>backup=JSON.parse(content);vm.runInContext(source.slice(exportStart,exportEnd),sandbox);input.onclick();assert.equal(backup.annotations[0].quote,'Grace');assert.ok(backup.legacyNotes.includes('Existing free notes'));
+ console.log('PASS: backup, import, duplicate merge, free notes preservation, invalid destination rejection, storage rollback');
+})().catch(e=>{console.error(e);process.exitCode=1});

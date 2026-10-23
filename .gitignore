@@ -7,3 +7,6 @@ dist/CNAME
 __pycache__/
 
 .vercel
+
+*.tgz
+qa-*.json

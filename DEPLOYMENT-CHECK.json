@@ -1,20 +1,86 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-24",
+  "version": "1.1.0",
+  "sourceCommit": "a4cb1fc3d3a9f42adf26093b3182ccfde855dabd",
+  "normalization": "CRLF to LF only",
   "results": [
     {
       "url": "https://dort-20261021-v1-gtstudy.vercel.app/",
       "files": {
         "index.html": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "5075bdf3b36f1de4e03930423c540d31a34f380e60e567cce57719785080db4a"
+        },
+        "atlas.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "b8662de2f8259cd6ce0f50552de99c2360ee583957971bfe04638c5450b15658"
         },
         "apostles.html": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "897e7fa6987a5ba25668edb572799c3f8ee7d43b77b1723f0015ae31cfd79daa"
+        },
+        "nicene.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "76304796b80d5d577417ad273e473dcb30871c50f4ca93422720f4df44cb3941"
+        },
+        "athanasian.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "3b9b003c5703778f9467bfeef5cd02045a29d20405d429e957ed49a82289a22e"
+        },
+        "belgic.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "c9513de57b01a85f38f18206f4217f570242ca8d178e3230c0f6493149d978b4"
+        },
+        "heidelberg.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "b038699afebf26a6568f737fbabfa9e367f63c567fbde414b9e23ac2c0b92a2a"
+        },
+        "dort.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "22f1f2db2701e4991de3f9a1d0cdd4c5dce34f8c3f9474dcc2ca6a6cacca85d7"
         },
         "style.css": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "c2fb09f12ec3f655e9f689bc9dde8601e5c5c6f5a2ef5b07e83a80c3235c98b8"
+        },
+        "study.css": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "e0ebb1d502903ee112d4f63b433d1c5fcbd7cd04825c2b6f64e869d64b03ed02"
+        },
+        "study.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "adf9d91ff7fa4729ef46145e5b17d2464e7291ad750d8f5267a4936299722ca8"
+        },
+        "maps.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "64e4bd55c8666de02b317fe91bcda24ecdf80767289553baf697710d9c0dd823"
+        },
+        "atlas-context.json": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "59854052041e2b46ee485aaf8c151b61713fda9eb64e04bec96818849c32a226"
+        },
+        "vendor/leaflet/leaflet.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+        },
+        "vendor/leaflet/leaflet.css": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303"
         }
       }
     },
@@ -23,15 +89,78 @@
       "files": {
         "index.html": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "5075bdf3b36f1de4e03930423c540d31a34f380e60e567cce57719785080db4a"
+        },
+        "atlas.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "b8662de2f8259cd6ce0f50552de99c2360ee583957971bfe04638c5450b15658"
         },
         "apostles.html": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "897e7fa6987a5ba25668edb572799c3f8ee7d43b77b1723f0015ae31cfd79daa"
+        },
+        "nicene.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "76304796b80d5d577417ad273e473dcb30871c50f4ca93422720f4df44cb3941"
+        },
+        "athanasian.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "3b9b003c5703778f9467bfeef5cd02045a29d20405d429e957ed49a82289a22e"
+        },
+        "belgic.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "c9513de57b01a85f38f18206f4217f570242ca8d178e3230c0f6493149d978b4"
+        },
+        "heidelberg.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "b038699afebf26a6568f737fbabfa9e367f63c567fbde414b9e23ac2c0b92a2a"
+        },
+        "dort.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "22f1f2db2701e4991de3f9a1d0cdd4c5dce34f8c3f9474dcc2ca6a6cacca85d7"
         },
         "style.css": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "c2fb09f12ec3f655e9f689bc9dde8601e5c5c6f5a2ef5b07e83a80c3235c98b8"
+        },
+        "study.css": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "e0ebb1d502903ee112d4f63b433d1c5fcbd7cd04825c2b6f64e869d64b03ed02"
+        },
+        "study.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "adf9d91ff7fa4729ef46145e5b17d2464e7291ad750d8f5267a4936299722ca8"
+        },
+        "maps.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "64e4bd55c8666de02b317fe91bcda24ecdf80767289553baf697710d9c0dd823"
+        },
+        "atlas-context.json": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "59854052041e2b46ee485aaf8c151b61713fda9eb64e04bec96818849c32a226"
+        },
+        "vendor/leaflet/leaflet.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+        },
+        "vendor/leaflet/leaflet.css": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303"
         }
       }
     },
@@ -40,15 +169,78 @@
       "files": {
         "index.html": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "5075bdf3b36f1de4e03930423c540d31a34f380e60e567cce57719785080db4a"
+        },
+        "atlas.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "b8662de2f8259cd6ce0f50552de99c2360ee583957971bfe04638c5450b15658"
         },
         "apostles.html": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "897e7fa6987a5ba25668edb572799c3f8ee7d43b77b1723f0015ae31cfd79daa"
+        },
+        "nicene.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "76304796b80d5d577417ad273e473dcb30871c50f4ca93422720f4df44cb3941"
+        },
+        "athanasian.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "3b9b003c5703778f9467bfeef5cd02045a29d20405d429e957ed49a82289a22e"
+        },
+        "belgic.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "c9513de57b01a85f38f18206f4217f570242ca8d178e3230c0f6493149d978b4"
+        },
+        "heidelberg.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "b038699afebf26a6568f737fbabfa9e367f63c567fbde414b9e23ac2c0b92a2a"
+        },
+        "dort.html": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "22f1f2db2701e4991de3f9a1d0cdd4c5dce34f8c3f9474dcc2ca6a6cacca85d7"
         },
         "style.css": {
           "status": 200,
-          "matches_local": true
+          "matches_local": true,
+          "sha256": "c2fb09f12ec3f655e9f689bc9dde8601e5c5c6f5a2ef5b07e83a80c3235c98b8"
+        },
+        "study.css": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "e0ebb1d502903ee112d4f63b433d1c5fcbd7cd04825c2b6f64e869d64b03ed02"
+        },
+        "study.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "adf9d91ff7fa4729ef46145e5b17d2464e7291ad750d8f5267a4936299722ca8"
+        },
+        "maps.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "64e4bd55c8666de02b317fe91bcda24ecdf80767289553baf697710d9c0dd823"
+        },
+        "atlas-context.json": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "59854052041e2b46ee485aaf8c151b61713fda9eb64e04bec96818849c32a226"
+        },
+        "vendor/leaflet/leaflet.js": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+        },
+        "vendor/leaflet/leaflet.css": {
+          "status": 200,
+          "matches_local": true,
+          "sha256": "337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303"
         }
       }
     }

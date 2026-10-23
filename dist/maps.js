@@ -33,8 +33,8 @@
  }
  function setLayer(key,manual=true){
   provider=key;document.querySelector('#map-provider').value=key;if(!map)return;
-  clearTimeout(timer);if(manual)tried.clear();tried.add(key);loaded=0;failed=0;box.classList.remove('map-unavailable');
-  if(layer){layer.off();map.removeLayer(layer)}
+  map.stop();clearTimeout(timer);if(manual)tried.clear();tried.add(key);loaded=0;failed=0;box.classList.remove('map-unavailable');
+  if(layer){map.removeLayer(layer);layer.off()}
   const p=providers[key];layer=L.tileLayer(p.url,{attribution:p.attribution,maxZoom:p.maxZoom,updateWhenIdle:true,updateWhenZooming:false,keepBuffer:1,detectRetina:false});
   layer.on('tileload',()=>{loaded++;clearTimeout(timer);status.textContent=p.label+'已显示 · 拖动地图；使用 ＋ / − 或双指缩放。';document.querySelector('#map-load').textContent='重新载入'});
   layer.on('tileerror',()=>{failed++;if(failed>=3&&!loaded)fallback()});
@@ -47,7 +47,7 @@
  async function start(){
   if(map){setLayer(provider);return}if(starting)return;starting=true;status.textContent='正在准备地图…';
   try{
-   await localLeaflet();box.replaceChildren();map=L.map(box,{scrollWheelZoom:false,zoomAnimation:!reduced.matches,fadeAnimation:!reduced.matches,preferCanvas:true,inertia:true,inertiaDeceleration:2400}).setView([selected.lat,selected.lon],10);
+   await localLeaflet();box.replaceChildren();map=L.map(box,{scrollWheelZoom:false,zoomAnimation:false,fadeAnimation:false,preferCanvas:true,inertia:true,inertiaDeceleration:2400}).setView([selected.lat,selected.lon],10);
    places.forEach(p=>{const icon=L.divIcon({className:'history-pin',html:`<span>${p.icon}</span>`,iconSize:[34,34],iconAnchor:[17,17]});const marker=L.marker([p.lat,p.lon],{icon,title:p.name}).addTo(map).bindTooltip(p.name,{direction:'top',offset:[0,-14]});marker.on('click',()=>choose(p.id,false));markers.set(p.id,marker)});
    new ResizeObserver(()=>{if(document.visibilityState==='visible')map.invalidateSize({pan:false})}).observe(box);
    setLayer(provider);choose(selected.id,false);
@@ -55,7 +55,7 @@
  }
  document.querySelector('#map-load').onclick=start;
  document.querySelector('#map-provider').onchange=e=>{provider=e.target.value;if(map)setLayer(provider);else start()};
- document.querySelector('#map-overview').onclick=()=>{if(!map){start().then(()=>map?.fitBounds(places.map(p=>[p.lat,p.lon]),{padding:[25,25],animate:false}));return}map.stop();map.fitBounds(places.map(p=>[p.lat,p.lon]),{padding:[25,25],animate:!reduced.matches,duration:.6})};
+ document.querySelector('#map-overview').onclick=()=>{if(!map){start().then(()=>map?.fitBounds(places.map(p=>[p.lat,p.lon]),{padding:[25,25],animate:false}));return}map.stop();map.fitBounds(places.map(p=>[p.lat,p.lon]),{padding:[25,25],animate:false})};
  const lazy=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){lazy.disconnect();start()}},{rootMargin:'180px'});lazy.observe(box);
  function stopTour(){clearInterval(tour);tour=null;document.querySelector('.atlas-workbench')?.classList.remove('tour-active');const b=document.querySelector('#tour-play');if(b)b.textContent='▷ 播放思想路线'}
  document.querySelector('#tour-play')?.addEventListener('click',()=>{

@@ -59,5 +59,5 @@ def enhance(out):
         p=out/(name+'.html');s=p.read_text(encoding='utf8');s=s.replace('<link rel="stylesheet" href="style.css">','<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="study.css">');s=s.replace('<script src="reader.js"></script>','<script src="reader.js" defer></script><script src="study.js" defer></script>');p.write_text(s,encoding='utf8')
     for p in out.glob('*.html'):
         s=p.read_text(encoding='utf8')
-        s=re.sub(r'((?:src|href)="[a-z-]+\.(?:css|js))"',r'\1?v=20261024.1"',s)
+        s=re.sub(r'((?:src|href)="[a-z-]+\.(?:css|js))"',r'\1?v=20261024.2"',s)
         p.write_text(s,encoding='utf8')

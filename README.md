@@ -17,11 +17,11 @@
 | 平台 | 地址 |
 |---|---|
 | GitHub Pages | https://07-je-gt-love-personal-20260918.github.io/dort-20261021-v1-GTstudy/ |
-| Surge | https://dort-20261021-v1-gtstudy.surge.sh |
-| Vercel | https://dort-20261021-v1-gtstudy.vercel.app |
+| Surge | https://dort-20261114-v1-2-gtstudy.surge.sh |
+| Vercel | https://dort-20261114-v1-2-gtstudy.vercel.app |
 | 源码 | https://github.com/07-Je-GT-Love-Personal-20260918/dort-20261021-v1-GTstudy |
 
-各平台最终检查状态见 `DEPLOYMENTS.md`。继续使用初版公开地址，保留收藏入口及同域名笔记；实际发布版本以页脚、发布记录与Git标签为准。
+各平台最终检查状态见 `DEPLOYMENTS.md`。新版 Vercel 和 Surge 使用日期与版本域名；GitHub Pages 沿用原仓库地址。恢复标签：`v1.2.0-20261114`。
 
 ## v1.1 使用说明
 

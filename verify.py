@@ -28,5 +28,5 @@ for name,doc in docs.items():
   if u.fragment and target.endswith('.html'):assert unquote(u.fragment) in docs[target].ids,(name,link)
 for name,text in json.loads(Path('cci-creeds.json').read_text(encoding='utf-8')).items():
  assert re.sub(r'\s','',text)==re.sub(r'\s','',''.join(docs[name+'.html'].text)),name
-assert len(docs)==8
+assert len(docs)==9
 print(json.dumps({'html_pages':len(docs),'local_links':'pass','unique_ids':'pass','cci_creeds_unchanged':3}))

@@ -8,6 +8,8 @@
  const providers={
   imagery:{label:'Esri 卫星影像',url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',attribution:'Tiles © Esri — Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community',maxZoom:18},
   topo:{label:'Esri 地形街道',url:'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',attribution:'Tiles © Esri — Esri, HERE, Garmin, FAO, NOAA, USGS, © OpenStreetMap contributors, and the GIS User Community',maxZoom:17},
+  osm:{label:'OpenStreetMap 街道',url:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',maxZoom:19},
+  nasa:{label:'NASA 全球概览',url:'https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg',attribution:'NASA Earthdata GIBS / Blue Marble',maxZoom:18,maxNativeZoom:8},
   opentopo:{label:'OpenTopoMap 备用',url:'https://tile.opentopomap.org/{z}/{x}/{y}.png',attribution:'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, SRTM | Map style © <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',maxZoom:17}
  };
  function detail(){
@@ -20,7 +22,7 @@
   const p=places.find(x=>x.id===id);if(!p)return;selected=p;
   document.querySelectorAll('[data-place]').forEach(n=>{const active=n.dataset.place===id;n.classList.toggle('is-active',active);n.setAttribute('aria-pressed',String(active))});
   markers.forEach((m,k)=>m.getElement()?.classList.toggle('active-pin',k===id));detail();
-  if(map&&move){map.stop();map.flyTo([p.lat,p.lon],11,{duration:reduced.matches?0:.7,animate:!reduced.matches})}
+  if(map&&move){map.stop();map.setView([p.lat,p.lon],provider==='nasa'?7:11,{animate:false})}
  }
  document.querySelectorAll('[data-place]').forEach(n=>{n.addEventListener('click',()=>choose(n.dataset.place));if(n.tagName.toLowerCase()==='g')n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(n.dataset.place)}})});
  choose(selected.id,false);
@@ -33,11 +35,12 @@
  }
  function setLayer(key,manual=true){
   provider=key;document.querySelector('#map-provider').value=key;if(!map)return;
+  if(key==='nasa'&&map.getZoom()>8)map.setZoom(7,{animate:false});
   map.stop();clearTimeout(timer);if(manual)tried.clear();tried.add(key);loaded=0;failed=0;box.classList.remove('map-unavailable');
   if(layer){map.removeLayer(layer);layer.off()}
-  const p=providers[key];layer=L.tileLayer(p.url,{attribution:p.attribution,maxZoom:p.maxZoom,updateWhenIdle:true,updateWhenZooming:false,keepBuffer:1,detectRetina:false});
+  const p=providers[key];layer=L.tileLayer(p.url,{attribution:p.attribution,maxZoom:p.maxZoom,maxNativeZoom:p.maxNativeZoom,updateWhenIdle:true,updateWhenZooming:false,keepBuffer:1,detectRetina:false});
   layer.on('tileload',()=>{loaded++;clearTimeout(timer);status.textContent=p.label+'已显示 · 拖动地图；使用 ＋ / − 或双指缩放。';document.querySelector('#map-load').textContent='重新载入'});
-  layer.on('tileerror',()=>{failed++;if(failed>=3&&!loaded)fallback()});
+  const current=layer;layer.on('tileerror',()=>{failed++;if(failed===3&&!loaded)queueMicrotask(()=>{if(layer===current&&!loaded)fallback()})});
   status.textContent='正在载入 '+p.label+'…';layer.addTo(map);timer=setTimeout(fallback,10000);
  }
  function localLeaflet(){return new Promise((resolve,reject)=>{
@@ -56,7 +59,6 @@
  document.querySelector('#map-load').onclick=start;
  document.querySelector('#map-provider').onchange=e=>{provider=e.target.value;if(map)setLayer(provider);else start()};
  document.querySelector('#map-overview').onclick=()=>{if(!map){start().then(()=>map?.fitBounds(places.map(p=>[p.lat,p.lon]),{padding:[25,25],animate:false}));return}map.stop();map.fitBounds(places.map(p=>[p.lat,p.lon]),{padding:[25,25],animate:false})};
- const lazy=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){lazy.disconnect();start()}},{rootMargin:'180px'});lazy.observe(box);
  function stopTour(){clearInterval(tour);tour=null;document.querySelector('.atlas-workbench')?.classList.remove('tour-active');const b=document.querySelector('#tour-play');if(b)b.textContent='▷ 播放思想路线'}
  document.querySelector('#tour-play')?.addEventListener('click',()=>{
   if(tour){stopTour();return}let i=places.findIndex(x=>x.id===selected.id);document.querySelector('.atlas-workbench').classList.add('tour-active');document.querySelector('#tour-play').textContent='■ 结束播放';
